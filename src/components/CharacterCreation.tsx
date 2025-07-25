@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { Button } from './ui/button'
 import { Card } from './ui/card'
 
 interface CharacterCreationProps {
@@ -139,14 +138,15 @@ const CharacterCreation: React.FC<CharacterCreationProps> = ({ onCharacterCreate
                     <button
                       key={cls.name}
                       onClick={() => setCharacter(prev => ({ ...prev, class: cls.name }))}
-                      className={`p-3 border-2 transition-all duration-200 ${
+                      className={`p-3 border-2 transition-all duration-200 interactive min-h-[80px] ${
                         character.class === cls.name
                           ? 'border-amber-400 bg-amber-700'
                           : 'border-amber-600 bg-amber-800 hover:bg-amber-700'
                       }`}
+                      style={{ touchAction: 'manipulation' }}
                     >
-                      <div className={`w-8 h-8 ${cls.color} mx-auto mb-1`}></div>
-                      <p className="text-amber-100 text-xs">{cls.name}</p>
+                      <div className={`w-8 h-8 ${cls.color} mx-auto mb-1 rounded`}></div>
+                      <p className="text-amber-100 text-xs font-bold">{cls.name}</p>
                       <p className="text-amber-400 text-xs">{cls.description}</p>
                     </button>
                   ))}
@@ -159,9 +159,13 @@ const CharacterCreation: React.FC<CharacterCreationProps> = ({ onCharacterCreate
           <Card className="pixel-panel">
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-xl text-amber-200">Характеристики</h2>
-              <Button onClick={rollStats} className="pixel-button text-sm">
+              <button 
+                onClick={rollStats} 
+                className="pixel-button text-sm interactive"
+                style={{ touchAction: 'manipulation' }}
+              >
                 🎲 Бросить кубики
-              </Button>
+              </button>
             </div>
 
             <div className="space-y-3">
@@ -204,13 +208,21 @@ const CharacterCreation: React.FC<CharacterCreationProps> = ({ onCharacterCreate
         </div>
 
         {/* Action Buttons */}
-        <div className="flex justify-center space-x-4 mt-8">
-          <Button onClick={onBack} className="pixel-button px-6 py-3">
+        <div className="flex flex-col sm:flex-row justify-center gap-4 mt-8">
+          <button 
+            onClick={onBack} 
+            className="pixel-button px-6 py-3 interactive"
+            style={{ touchAction: 'manipulation' }}
+          >
             ← НАЗАД
-          </Button>
-          <Button onClick={handleCreateCharacter} className="pixel-button px-6 py-3 bg-green-700 hover:bg-green-600">
+          </button>
+          <button 
+            onClick={handleCreateCharacter} 
+            className="pixel-button px-6 py-3 bg-green-700 hover:bg-green-600 active:bg-green-800 interactive"
+            style={{ touchAction: 'manipulation' }}
+          >
             НАЧАТЬ ПРИКЛЮЧЕНИЕ →
-          </Button>
+          </button>
         </div>
       </div>
     </div>

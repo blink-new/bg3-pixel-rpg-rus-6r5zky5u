@@ -1,5 +1,4 @@
 import React from 'react'
-import { Button } from './ui/button'
 
 interface MainMenuProps {
   onStartGame: () => void
@@ -32,30 +31,31 @@ const MainMenu: React.FC<MainMenuProps> = ({ onStartGame }) => {
 
         {/* Menu Options */}
         <div className="space-y-4 mb-8">
-          <Button 
+          <button 
             onClick={onStartGame}
-            className="pixel-button text-lg px-8 py-4 w-64 hover:scale-105 transform transition-all duration-200"
+            className="pixel-button text-lg px-8 py-4 w-64 block mx-auto interactive"
+            style={{ touchAction: 'manipulation' }}
           >
             НОВАЯ ИГРА
-          </Button>
+          </button>
           
-          <Button 
-            className="pixel-button text-lg px-8 py-4 w-64 opacity-50 cursor-not-allowed"
+          <button 
+            className="pixel-button text-lg px-8 py-4 w-64 opacity-50 cursor-not-allowed block mx-auto"
             disabled
           >
             ЗАГРУЗИТЬ ИГРУ
-          </Button>
+          </button>
           
-          <Button 
-            className="pixel-button text-lg px-8 py-4 w-64 opacity-50 cursor-not-allowed"
+          <button 
+            className="pixel-button text-lg px-8 py-4 w-64 opacity-50 cursor-not-allowed block mx-auto"
             disabled
           >
             НАСТРОЙКИ
-          </Button>
+          </button>
         </div>
 
         {/* Character Preview */}
-        <div className="flex justify-center space-x-6 mb-8">
+        <div className="flex justify-center flex-wrap gap-4 mb-8 px-4">
           {[
             { name: 'Астарион', color: 'bg-red-600' },
             { name: 'Гейл', color: 'bg-purple-600' },
@@ -66,8 +66,11 @@ const MainMenu: React.FC<MainMenuProps> = ({ onStartGame }) => {
             { name: 'Минск', color: 'bg-yellow-600' }
           ].map((char, index) => (
             <div key={char.name} className="text-center">
-              <div className={`character-portrait ${char.color} mb-2 hover:scale-110 transition-transform duration-200`}>
-                <div className="w-full h-full flex items-center justify-center text-white text-xs">
+              <div 
+                className={`character-portrait ${char.color} mb-2 interactive`}
+                style={{ touchAction: 'manipulation' }}
+              >
+                <div className="w-full h-full flex items-center justify-center text-white text-xs font-bold">
                   {char.name[0]}
                 </div>
               </div>

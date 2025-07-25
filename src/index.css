@@ -82,5 +82,105 @@
 
   body {
     @apply bg-background text-foreground;
+
+    /* Улучшения для мобильных устройств */
+    -webkit-touch-callout: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
   }
+}
+
+/* Пиксельные стили для игры */
+.pixel-button {
+  @apply bg-amber-700 hover:bg-amber-600 text-amber-100 font-bold border-2 border-amber-500;
+  @apply shadow-lg hover:shadow-xl transition-all duration-200;
+  @apply active:scale-95 active:bg-amber-800;
+
+  font-family: 'Courier New', monospace;
+  text-shadow: 1px 1px 0 rgb(0 0 0 / 50%);
+
+  /* Улучшения для touch */
+  min-height: 44px;
+  min-width: 44px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgb(218 165 32 / 30%);
+}
+
+.pixel-glow {
+  text-shadow: 0 0 10px rgb(218 165 32 / 80%), 0 0 20px rgb(218 165 32 / 60%);
+}
+
+.character-portrait {
+  @apply w-12 h-12 rounded-lg border-2 border-amber-400 shadow-md;
+  @apply hover:border-amber-300 transition-all duration-200;
+  @apply active:scale-95;
+
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgb(218 165 32 / 30%);
+}
+
+.fade-in {
+  animation: fade-in 1s ease-in-out;
+}
+
+@keyframes fade-in {
+  from { 
+    opacity: 0%; 
+    transform: translateY(20px); 
+  }
+  
+  to { 
+    opacity: 100%; 
+    transform: translateY(0); 
+  }
+}
+
+/* Мобильные улучшения */
+@media (width <= 768px) {
+  .pixel-button {
+    @apply text-base px-6 py-3;
+
+    min-height: 48px;
+  }
+  
+  .character-portrait {
+    @apply w-10 h-10;
+  }
+}
+
+/* Интерактивные элементы */
+.interactive {
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgb(218 165 32 / 30%);
+  touch-action: manipulation;
+}
+
+.interactive:hover {
+  transform: scale(1.05);
+}
+
+.interactive:active {
+  transform: scale(0.95);
+}
+
+/* Пиксельные панели */
+.pixel-panel {
+  @apply bg-amber-800 border-2 border-amber-600 p-4 shadow-lg;
+
+  background: linear-gradient(135deg, rgb(146 64 14 / 90%), rgb(120 53 15 / 90%));
+}
+
+.pixel-font {
+  font-family: 'Courier New', monospace;
+}
+
+/* Улучшения для форм */
+input, select {
+  appearance: none;
+}
+
+input:focus, select:focus {
+  outline: 2px solid rgb(218 165 32 / 80%);
+  outline-offset: 2px;
 }
